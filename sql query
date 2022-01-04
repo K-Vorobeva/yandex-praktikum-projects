@@ -1,0 +1,109 @@
+-- вывод списка городов, в которых есть аэропорты
+SELECT
+    DISTINCT city
+FROM airports; 
+
+/* Изучим таблицу flights и подсчитаем количество вылетов (flight_id) из каждого аэропорта вылета (departure_airport).
+Результат отсоруем в порядке убывания количества вылетов.*/
+SELECT
+    departure_airport,
+    COUNT(flight_id) AS cnt_flights
+FROM
+    flights
+GROUP BY departure_airport
+ORDER BY cnt_flights DESC;
+
+
+/* Найдем количество рейсов на каждой модели самолёта с вылетом в сентябре 2018 года.*/
+SELECT
+    aircrafts.model AS model,
+    COUNT(flight_id) AS flights_amount
+FROM
+    aircrafts
+    INNER JOIN flights ON flights.aircraft_code = aircrafts.aircraft_code
+WHERE
+    EXTRACT(month FROM flights.departure_time::date) = '09' 
+GROUP BY aircrafts.model;
+
+
+/* Посчитаем количество рейсов по всем моделям самолётов Boeing, Airbus и другим ('other') в сентябре. 
+Типы моделей поместим в столбец type_aircraft, а количество рейсов — во flights_amount. */
+SELECT
+    CASE WHEN SUBQ.model LIKE 'Boeing%' THEN
+    'Boeing'
+    WHEN SUBQ.model LIKE 'Airbus%' THEN
+    'Airbus'
+        ELSE 'other'
+    END AS type_aircraft,
+    SUM(SUBQ.flights_amount) AS flights_amount
+FROM
+    (SELECT
+        aircrafts.model AS model,
+        COUNT(flight_id) AS flights_amount
+    FROM
+        aircrafts
+        INNER JOIN flights ON flights.aircraft_code = aircrafts.aircraft_code
+    WHERE
+        EXTRACT(month FROM flights.departure_time::date) = '09' 
+    GROUP BY aircrafts.model) AS SUBQ
+GROUP BY type_aircraft;
+
+
+/* Посчитаем среднее количество прибывающих рейсов в день для каждого города за август 2018 года. */
+SELECT
+    city,
+    AVG(average_flights) AS average_flights
+FROM 
+    (SELECT
+        airports.city,
+        EXTRACT(day FROM flights.arrival_time::date) AS day,
+        COUNT(flights.flight_id) AS average_flights
+    FROM    
+       airports
+       INNER JOIN flights ON flights.arrival_airport = airports.airport_code
+    WHERE
+        EXTRACT(month FROM flights.arrival_time::date) = '08'
+    GROUP BY airports.city, EXTRACT(day FROM flights.arrival_time::date)
+     ) AS SUBQ
+GROUP BY city;
+
+
+/* Установиv фестивали, которые проходили с 23 июля по 30 сентября 2018 года в Москве, и номер недели, в которую они проходили. */
+SELECT
+    festival_name,
+    EXTRACT(week FROM festival_date::date) AS festival_week
+FROM festivals
+WHERE festival_date::date BETWEEN '2018-07-23' AND '2018-09-30' AND festival_city = 'Москва';
+
+
+/* Для каждой недели с 23 июля по 30 сентября 2018 года посчитаем количество билетов, 
+купленных на рейсы в Москву (номер недели week_number и количество билетов ticket_amount). 
+Получим таблицу, в которой будет номер недели; информация о количестве купленных за неделю билетов; 
+номер недели ещё раз, если в эту неделю проходил фестиваль, и nan, если не проходил; а также название фестиваля festival_name. */
+SELECT
+    T.week_number,
+    T.ticket_amount,
+    T.festival_week,
+    T.festival_name
+FROM ((
+        SELECT
+            EXTRACT(week FROM flights.departure_time) AS week_number,
+            COUNT(ticket_flights.ticket_no) AS ticket_amount
+        FROM
+            airports
+            INNER JOIN flights ON airports.airport_code = flights.arrival_airport
+            INNER JOIN ticket_flights ON flights.flight_id = ticket_flights.flight_id
+        WHERE
+            airports.city = 'Москва'
+            AND CAST(flights.departure_time AS date) BETWEEN '2018-07-23' AND '2018-09-30'
+        GROUP BY
+            week_number) t
+    LEFT JOIN (
+        SELECT
+            festival_name,
+            EXTRACT(week FROM festivals.festival_date) AS festival_week
+        FROM
+            festivals
+        WHERE
+            festival_city = 'Москва'
+            AND CAST(festivals.festival_date AS date) BETWEEN '2018-07-23' AND '2018-09-30') t2 ON t.week_number = t2.festival_week) AS T;
