@@ -21,4 +21,3 @@ for row in table.find_all('tr'):
 
 
 festivals = pd.DataFrame(content, columns=heading_table)
-print(festivals)
