@@ -1,27 +1,17 @@
-# yandex-praktikum-projects
 
-В этом репозитории собраны мои проекты из курса "Аналитик данных" Яндекс.Практикума
+В этом репозитории собраны проекты, выполненные мной на курсе "Аналитик данных" Яндекс.Практикума
 
-## Содержание:
 
-### [Исследование надёжности заёмщиков](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/02-investigation-of-the-reliability-of-borrowers)
-
-### [Исследование объявлений о продаже квартир](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/03-analytics-of-ads-for-the-sale-of-apartments)
-
-### [Определение перспективного тарифа для телеком компании](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/04-determining-the-preferred-tariff)
-
-### [Определение успешности компьютерных игр](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/05-analysis-of-the-success-of-computer-games)
-
-### [Оценка спроса на рейсы авиакомпании](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/06-demand-for-airline-flights)
-
-### [Анализ бизнес-показателей в Яндекс.Афиша](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/07-analysis-of-business-metrics)
-
-### [Принятие решений в бизнесе на основе данных](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/08-data-driven-business-solutions)
-
-### [Анализ рынка заведений общественного питания Москвы](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/09-market-analysis-of-catering-establishments)
-
-### [Анализ поведения пользователей мобильного приложения](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/10-analysis-of-the-behavior-of-mobile-app-users)
-
-### [Анализ взаимодействия пользователей Яндекс.Дзен с карточками статей](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/11-dashboard-for-yandex-zen)
-
-### [Прогноз оттока клиентов фитнес-центра](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/12-forecast-of-outflow-of-fitness-center-customers)
+| Название проекта | Описание | Используемые инструменты и библиотеки | 
+| :----------------------- | :---------------------- | :---------------------- |
+| [Исследование надёжности заёмщиков](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/02-investigation-of-the-reliability-of-borrowers) | Определение надежности заёмщиков в зависимости от семейного положения, количества детей, уровня дохода и целеполагания кредита для построения модели кредитного скоринга | pandas, numpy, pymystem3 |
+| [Исследование объявлений о продаже квартир](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/03-analytics-of-ads-for-the-sale-of-apartments)| Анализ факторов, влияющих на рыночную стоимость жилья в Санкт-Петербурге | pandas, datetime, numpy, matplotlib |
+| [Определение перспективного тарифа для телеком компании](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/04-determining-the-preferred-tariff)| Анализ поведения 500 абонентов по двум тарифам, для выявления коммерчески-выгодного тарифа | pandas, numpy, matplotlib, scipy |
+| [Определение успешности компьютерных игр](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/05-analysis-of-the-success-of-computer-games)| Анализ рынка видеоигр для выделения потенциально-прибыльных игровых платформ и жанров, определения предпочтений пользователей в зависисмости от регионы, проверка гипотез о влиянии на пользовательскийрейтинг жанра и платформы | pandas, numpy, matplotlib, seaborn, scipy |
+| [Оценка спроса на рейсы авиакомпании](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/06-demand-for-airline-flights)| Анализ спроса пассажиров на рейсы в города, где проходят крупнейшие фестивали, на основе данных полученных парсингом и рядом SQL-запросов | SQL, pandas, requests, bs4, matplotlib |
+| [Анализ бизнес-показателей в Яндекс.Афиша](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/07-analysis-of-business-metrics)| Когортный анализ пользователей сайта, рассчет продуктовых метрик DAU, MAU, WAU, Retention Rate, ASl; рассчет метрик электронной комерции - среднее число покупок, средний чек, LTV; рассчет маркетинговых метрик - CAC, ROMI  | pandas, numpy, matplotlib, seaborn |
+| [Принятие решений в бизнесе на основе данных](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/08-data-driven-business-solutions)| Приоритизация гипотез фреймворками ICE и RICE, анализ A/B-теста наоснове сравнение кумулятивных метрик по группам и проверки статистических гипотез | pandas, numpy, matplotlib, scipy |
+| [Анализ рынка заведений общественного питания Москвы](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/09-market-analysis-of-catering-establishments)| Анализ рынка заведений общественного питания для выявления характерных особенностей по типам заведений, распространение заведений и определния перспективности открытия кафе с роботами-оффициантами в Москве, презентация результатов исследрвания с рекомендациями |  pandas, numpy, matplotlib, seaborn, plotly |
+| [Анализ поведения пользователей мобильного приложения](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/10-analysis-of-the-behavior-of-mobile-app-users)| Анализ влияния на воронку событий при изменении шрифтов в мобильном приложении по результатам A/A/B-теста, на основе разницы между долями групп сплит-теста| pandas, numpy, plotly, scipy |
+| [Анализ взаимодействия пользователей Яндекс.Дзен с карточками статей](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/11-dashboard-for-yandex-zen)| На основе данных о взаимодействии пользователей Яндекс.Дзен с карточками статей построен дашборд, подготовлена презентация для отдела маркетинга. | Tableau, SQLAlchemy, PostgreSQL |
+| [Прогноз оттока клиентов фитнес-центра](https://github.com/K-Vorobeva/yandex-praktikum-projects/tree/main/12-forecast-of-outflow-of-fitness-center-customers)| Построена модель оттока клиентов фитнес-центра, определены признаки, влияющие на отток клиентов и сформулированы рекомендаций для их удержания | pandas, numpy, matplotlib, seaborn, plotly, sklearn, scipy |
